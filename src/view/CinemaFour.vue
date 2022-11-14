@@ -67,17 +67,17 @@ export default {
           height: 94px;
         }
         .item {
-            margin-left: 6px;
-            font-size: 14px;
-            h2 {
-              font-weight: bold;
-              color: black;
-            }
-            p {
-              color: #666666;
-              margin-top: 4px;
-            }
+          margin-left: 6px;
+          font-size: 14px;
+          h2 {
+            font-weight: bold;
+            color: black;
           }
+          p {
+            color: #666666;
+            margin-top: 4px;
+          }
+        }
       }
 
       .point {
@@ -87,7 +87,7 @@ export default {
           color: orange;
           font-size: 15px;
         }
-        div{
+        div {
           font-size: 14px;
           color: #99999999;
         }

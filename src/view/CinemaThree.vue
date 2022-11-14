@@ -22,29 +22,29 @@
     </div>
     <!-- 过渡层 -->
     <div class="mask"></div>
-      <div class="showMovie2" v-for="item in readyList" :key="item.id">
-        <p class="date">{{ item.comingTitle }}</p>
-        <div class="mob">
-          <div class="left">
-            <img :src="item.img" alt="电影图片" />
+    <div class="showMovie2" v-for="item in readyList" :key="item.id">
+      <p class="date">{{ item.comingTitle }}</p>
+      <div class="mob">
+        <div class="left">
+          <img :src="item.img" alt="电影图片" />
+        </div>
+        <div class="right">
+          <div class="text">
+            <!-- 电影名称 -->
+            <h3>{{ item.nm }}</h3>
+            <p class="point">
+              <span>{{ item.wish }}</span>
+              人想看
+            </p>
+            <p>
+              主演:<span>{{ item.star }}</span>
+            </p>
+            <p>{{ item.showInfo }}</p>
           </div>
-          <div class="right">
-            <div class="text">
-              <!-- 电影名称 -->
-              <h3>{{ item.nm }}</h3>
-              <p class="point">
-                <span>{{ item.wish }}</span>
-                人想看
-              </p>
-              <p>
-                主演:<span>{{ item.star }}</span>
-              </p>
-              <p>{{item.showInfo}}</p>
-            </div>
-            <div class="but">预售</div>
-          </div>
+          <div class="but">预售</div>
         </div>
       </div>
+    </div>
 
     <MybtmBar />
   </div>
@@ -64,13 +64,13 @@ export default {
     getReadyMovieFun() {
       getReadyMovie().then((data) => {
         this.expectList = data.coming;
-        console.log('近期最受期待列表--> ', this.expectList)
+        console.log("近期最受期待列表--> ", this.expectList);
       });
     },
     getReadyMovieListFun() {
       getReadyMovieList().then((data) => {
         this.readyList = data.coming;
-        console.log('待映列表--> ', this.readyList)
+        console.log("待映列表--> ", this.readyList);
       });
     },
   },
@@ -201,7 +201,7 @@ export default {
       flex: 1;
       border-bottom: 1px solid #f5f5f5;
       height: 100%;
-      p{
+      p {
         font-style: 12px;
       }
       .but {
@@ -228,7 +228,7 @@ export default {
         }
         .point {
           font-weight: bold;
-          span{
+          span {
             color: #fab109;
           }
         }

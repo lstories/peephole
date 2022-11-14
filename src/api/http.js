@@ -5,10 +5,10 @@ import axios from "axios";
 // https://apis.netstart.cn/maoyan
 
 const service = axios.create({
-  timeout : 30000, // 超时响应时间
+  timeout: 30000, // 超时响应时间
   baseURL: "https://apis.netstart.cn/maoyan",
   headers: {
-    "Content-Type":"application/json;chatset=utf-8" // 表单数据转化
+    "Content-Type": "application/json;chatset=utf-8" // 表单数据转化
   }
 })
 
@@ -18,7 +18,7 @@ service.interceptors.request.use(
     return config
   },
   (error) => {
-    console.log('request报错信息, ',error);
+    console.log('request报错信息, ', error);
     Promise.reject(error)
   }
 )

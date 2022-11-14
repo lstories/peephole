@@ -1,7 +1,7 @@
 // 即将上线的电影
 import request from "./http.js"
 
-export function getReadyMovie(){
+export function getReadyMovie() {
   return request({
     url: 'index/mostExpected',
     method: 'get',
@@ -10,7 +10,7 @@ export function getReadyMovie(){
 }
 
 // 更多
-export function getReadyMovieList(){
+export function getReadyMovieList() {
   return request({
     url: 'index/comingList',
     method: 'get',

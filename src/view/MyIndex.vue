@@ -20,25 +20,47 @@
     <div class="current">
       <!-- 城市区域 -->
       <router-link tag="div" to="/position" class="city">
-        <span>{{cityname}}</span>
+        <span>{{ cityname }}</span>
         <span class="iconfont icon-xiajiantou"></span>
       </router-link>
       <!-- 选项卡区 -->
       <div class="cinema">
-        <div @click="goChange1" :class="{'router-link-active': moveIndex==0}">热映</div>
-        <div @click="goChange2" :class="{'router-link-active': moveIndex==1}">影院</div>
-        <div @click="goChange3" :class="{'router-link-active': moveIndex==2}">特映</div>
-        <div @click="goChange4" :class="{'router-link-active': moveIndex==3.3}">经典电影</div>
-        <span :style="{
-          left: 54 * moveIndex + 4 + 'px'
-        }"></span>
+        <div
+          @click="goChange1"
+          :class="{ 'router-link-active': moveIndex == 0 }"
+        >
+          热映
+        </div>
+        <div
+          @click="goChange2"
+          :class="{ 'router-link-active': moveIndex == 1 }"
+        >
+          影院
+        </div>
+        <div
+          @click="goChange3"
+          :class="{ 'router-link-active': moveIndex == 2 }"
+        >
+          特映
+        </div>
+        <div
+          @click="goChange4"
+          :class="{ 'router-link-active': moveIndex == 3.3 }"
+        >
+          经典电影
+        </div>
+        <span
+          :style="{
+            left: 54 * moveIndex + 4 + 'px',
+          }"
+        ></span>
       </div>
       <!-- 搜索 -->
-      <span class="search iconfont icon-fangdajing"></span>
+      <span class="search iconfont icon-fangdajing" @click="gosearch"></span>
     </div>
     <!-- 显示路由层 -->
     <div>
-      <router-view :cityip="cityip" ></router-view>
+      <router-view :cityip="cityip"></router-view>
     </div>
   </div>
 </template>
@@ -46,12 +68,12 @@
 <script>
 import "../assets/font/iconfont.js";
 export default {
-  data(){
-    return{
+  data() {
+    return {
       moveIndex: 0,
-    }
+    };
   },
-  props:['cityip', 'cityname'],
+  props: ["cityip", "cityname"],
   name: "MyIndex",
   methods: {
     goChange1() {
@@ -64,11 +86,14 @@ export default {
     },
     goChange3() {
       this.moveIndex = 2;
-      this.$router.push("/index/three")
+      this.$router.push("/index/three");
     },
-    goChange4(){
+    goChange4() {
       this.moveIndex = 3.3;
-      this.$router.push("/index/four")
+      this.$router.push("/index/four");
+    },
+    gosearch() {
+      this.$router.push("/search");
     }
   },
 };
@@ -103,7 +128,7 @@ export default {
       display: flex;
       height: 30px;
       width: 94px;
-      img{
+      img {
         width: 94px;
         height: 30px;
       }

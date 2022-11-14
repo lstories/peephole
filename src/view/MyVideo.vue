@@ -2,7 +2,7 @@
   <div>
     <div class="viTop">猫眼电影</div>
     <div>
-      <div
+      <router-link tag="div" :to="'/limovie?videoid='+item.video.id+'&videourl='+item.video.url"
         class="smvideo"
         v-for="item in videoList"
         :key="item.id"
@@ -13,7 +13,7 @@
           <img :src="item.user.avatarurl" alt="小视频图片" />
           <div class="username">{{ item.user.nickName }}</div>
         </div>
-      </div>
+      </router-link>
       <MybtmBar />
     </div>
   </div>

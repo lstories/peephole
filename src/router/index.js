@@ -4,7 +4,7 @@ import MyIndex from '../view/MyIndex'
 import MyVideo from '../view/MyVideo'
 import MyHome from '../view/MyHome.vue'
 import MyMine from '../view/MyMine.vue'
-import  MyPosition from '../view/MyPosition.vue'
+import MyPosition from '../view/MyPosition.vue'
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -24,24 +24,32 @@ export default new VueRouter({
         {
           path: 'one',
           name: 'one',
-          component: () => import ('../view/CinemaOne.vue'),
+          component: () => import('../view/CinemaOne.vue'),
         },
         {
           path: 'two',
           name: 'two',
-          component: () => import ('../view/CinemaTwo.vue'),
+          component: () => import('../view/CinemaTwo.vue'),
         },
+
         {
           path: 'three',
           name: 'three',
-          component: () => import ('../view/CinemaThree.vue')
+          component: () => import('../view/CinemaThree.vue')
         },
+
         {
           path: 'four',
           name: 'four',
-          component: () => import ('../view/CinemaFour.vue')
+          component: () => import('../view/CinemaFour.vue')
         }
       ]
+    },
+    // 视频详情
+    {
+      path: '/limovie',
+      name: 'limovie',
+      component: () => import('../view/LiMovie.vue')
     },
     {
       path: '/video',
@@ -53,6 +61,12 @@ export default new VueRouter({
       path: '/position',
       name: "position",
       component: MyPosition
+    },
+    // 搜索功能
+    {
+      path: '/search',
+      name: "search",
+      component: () => import('../view/MySearch.vue')
     },
     // 我的
     {
@@ -67,7 +81,7 @@ export default new VueRouter({
       component: MyMine,
       beforeEnter(to, from, next) {
         let myId = window.localStorage.getItem("userId")
-        if(myId){
+        if (myId) {
           next();
           return
         } else {
@@ -76,7 +90,7 @@ export default new VueRouter({
       }
     }
 
-    
+
   ]
 
 
