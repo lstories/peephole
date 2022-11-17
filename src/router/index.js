@@ -74,6 +74,18 @@ export default new VueRouter({
       name: 'myhome',
       component: MyHome
     },
+    // 电影详情
+    {
+      path: '/details',
+      name: 'details',
+      component: () => import ('../view/MyDetails.vue')
+    },
+    // 售票
+    {
+      path: '/movieticket',
+      name: 'movieticket',
+      component: () => import ('../view/movieTicket.vue')
+    },
     // 我的详细页
     {
       path: '/mymine',

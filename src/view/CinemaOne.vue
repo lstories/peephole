@@ -4,20 +4,20 @@
       <div class="niceTalk">{{ hotMovieList.title }}</div>
       <!-- 好评电影层 -->
       <div class="more">
-        <div
+        <router-link tag="div" :to="'/details?movieId='+item.movieId"
           class="niceMovie"
           v-for="item in hotMovieList.movieList"
           :key="item.movieId"
         >
           <div class="img">
-            <img :src="item.poster" alt="电影图片" />
+            <img :src="item.poster + '?imageView2/1/w/300/h/414'" alt="电影图片" />
             <span v-if="item.score">观众评分 &nbsp;{{ item.score }}</span>
             <!-- 阴影层 -->
             <div></div>
           </div>
           <!-- 简介 -->
           <h4>{{ item.name }}</h4>
-        </div>
+        </router-link>
       </div>
     </div>
     <!-- 过渡层 -->

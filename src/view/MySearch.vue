@@ -2,29 +2,39 @@
   <div class="mysearch">
     <div class="SearchTop">
       <div class="title">
-        <span class="black">&lt;</span>
+        <span class="black" @click="goBack">&lt;</span>
         猫眼电影
       </div>
     </div>
     <div class="searchBox">
       <div class="searchCon">
         <span class="iconfont icon-fangdajing"></span>
-        <input type="text" class="input" placeholder="搜电影, 搜影院" />
-        <span class="text">取消</span>
+        <input
+          v-model.lazy="vuell"
+          type="text"
+          class="input"
+          placeholder="搜电影, 搜影院"
+        />
+        <span class="text" @click="goBack">取消</span>
       </div>
     </div>
     <div class="content">
       <div class="list">
         <ul>
-          <li>
+          <li v-for="item in listdata" :key="item.id">
             <div class="left">
-              <img src="" alt="图片" />
+              <div class="image">
+                <img :src="item.poster" alt="图片" />
+              </div>
             </div>
             <div class="right">
-              <div class="title">剧名 <span>8分</span></div>
-              <p class="p1">作者</p>
-              <p class="p2">作者</p>
-              <p class="time">作者</p>
+              <div class="title">
+                <span class="span1">{{item.name}}</span>
+                <span class="span2">{{item.score==''?'4':item.score}}分</span>
+              </div>
+              <p class="p1">{{item.ename}}</p>
+              <p class="p2">{{item.catogary}}</p>
+              <p class="time">{{item.release}}</p>
             </div>
           </li>
         </ul>
@@ -34,8 +44,40 @@
 </template>
 
 <script>
+import { searchMovie } from '../api/search.js'
 export default {
+  props: ['cityip'],
   name: "MySearch",
+  data() {
+    return {
+      vuell: null,
+      listdata:null,
+    }
+  },
+  methods: {
+    searchMovieFun() {
+      searchMovie({
+        keyword:this.vuell,
+        ci:this.cityip,
+        limit:10
+      }).then((data) => {
+        this.listdata = data       
+        console.log('dalistdatata==>', this.listdata)
+      });
+    },
+    goBack(){
+      this.$router.go(-1);
+    },
+  },
+  created(){
+    this.searchMovieFun();
+  },
+  watch:{
+    vuell(){
+      // console.log("执行了")
+      this.searchMovieFun();
+    }
+  }
 };
 </script>
 
@@ -107,12 +149,36 @@ export default {
         li {
           display: flex;
           align-items: center;
+          border-bottom: 1px solid #e6e6e6;
+          padding: 12px;
           .left {
-            width: 60px;
-
-            img {
-              width: 120px;
-              display: block;
+            .image {
+              width: 60px;
+              margin-right: 10px;
+              img {
+                width: 100%;
+                display: block;
+              }
+            }
+          }
+          .right {
+            flex: 1;
+            .title {
+              display: flex;
+              justify-content: space-between;
+              .span1 {
+                color: #222262;
+                font-size: 14px;
+              }
+              .span2 {
+                color: #ffaa84;
+                font-size: 12px;
+              }
+            }
+            p {
+              font-size: 12px;
+              color: #666666;
+              margin-top: 2px;
             }
           }
         }
